@@ -1,11 +1,9 @@
-<div class="flex justify-center flex-col h-[100vh] bg-gray-100"
-style="background-image:linear-gradient(rgb(0,0,0,0.3) , rgb(0,0,0,0.4)) ,
- url(../assets/images/bg1.jpg) ;
- background-attachment: fixed;
-  background-size: cover;">
+<div class="flex justify-between flex-col h-[100vh] ">
 
-  <app-header></app-header>
-  <router-outlet class="mt-20"></router-outlet>
-  <app-footer></app-footer>
+    <app-header></app-header>
+    <main class="mt-20 mb-10">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
 
 </div>

@@ -43,6 +43,25 @@
         </li>
 
 
+        @if (!checkPath()) {
+        <li>
+          <a routerLink="/login"
+             routerLinkActive="text-blue-700 md:dark:text-blue-500"
+             class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:text-blue-700 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-blue-500">
+            Login
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/register"
+             routerLinkActive="text-blue-700 md:dark:text-blue-500"
+             class=" block py-2 px-3 md:p-0 text-gray-900 rounded hover:text-blue-700 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-blue-500">
+            Register
+          </a>
+        </li>
+      }
+
+
       </ul>
 
     </div>
