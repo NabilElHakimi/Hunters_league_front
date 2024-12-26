@@ -8,10 +8,12 @@ import { RegisterFormComponent } from './components/auth/register-form/register-
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, LoginFormComponent, RegisterFormComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'Hunters_league_front';
+  
+
 }
