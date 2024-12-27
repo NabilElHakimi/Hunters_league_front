@@ -1,7 +1,7 @@
 import { Component, OnInit  , inject} from '@angular/core';
 import { CompetitionCardComponent } from '../../components/cards/competition-card/competition-card.component';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 interface Competition {
@@ -28,7 +28,5 @@ interface Competition {
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-
-
 
 }
