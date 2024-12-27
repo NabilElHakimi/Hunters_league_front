@@ -1,85 +1,133 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="max-w-md mx-auto bg-white py-10 px-8 rounded-sm shadow-md">
-
-
+<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm.value)" class="max-w-md mx-auto bg-white py-10 px-8 rounded-sm shadow-md">
   <h1 class="text-2xl uppercase w-full py-3 mb-4 text-center">Register</h1>
 
+  <!-- Email -->
   <div class="relative z-0 w-full mb-5 group">
-      <input formControlName="email" type="email" id="email"
-             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-             placeholder=" " required />
-      <label for="email"
-             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-        Email address
-      </label>
+    <input
+      name="email"
+      ngModel
+      required
+      email
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+    />
+    <label
+      for="email"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+    >
+      Email address
+    </label>
   </div>
 
+  <!-- Username -->
   <div class="relative z-0 w-full mb-5 group">
-      <input formControlName="username" type="text" id="username"
-             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-             placeholder=" " required />
-      <label for="username"
-             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-        Username
-      </label>
+    <input
+      name="username"
+      ngModel
+      required
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+    />
+    <label
+      for="username"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+    >
+      Username
+    </label>
   </div>
 
+  <!-- Password -->
   <div class="relative z-0 w-full mb-5 group">
-      <input formControlName="password" type="password" id="password"
-             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-             placeholder=" " required />
-      <label for="password"
-             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-        Password
-      </label>
+    <input
+      name="password"
+      ngModel
+      required
+      minlength="6"
+      type="password"
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+    />
+    <label
+      for="password"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+    >
+      Password
+    </label>
   </div>
 
-  <div class="grid md:grid-cols-2 md:gap-6">
-    <div class="relative z-0 w-full mb-5 group">
-        <input formControlName="firstName" type="text" id="firstName"
-               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-               placeholder=" " required />
-        <label for="firstName"
-               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-          First name
-        </label>
-    </div>
-    <div class="relative z-0 w-full mb-5 group">
-        <input formControlName="lastName" type="text" id="lastName"
-               class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-               placeholder=" " required />
-        <label for="lastName"
-               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-          Last name
-        </label>
-    </div>
-  </div>
-
+  <!-- First Name -->
   <div class="relative z-0 w-full mb-5 group">
-      <input formControlName="cin" type="text" id="cin"
-             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-             placeholder=" " required />
-      <label for="cin"
-             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-        CIN
-      </label>
+    <input
+      name="firstName"
+      ngModel
+      required
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+    />
+    <label
+      for="firstName"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+    >
+      First Name
+    </label>
   </div>
 
+  <!-- Last Name -->
   <div class="relative z-0 w-full mb-5 group">
-      <input formControlName="nationality" type="text" id="nationality"
-             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-             placeholder=" " required />
-      <label for="nationality"
-             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
-        Nationality
-      </label>
+    <input
+      name="lastName"
+      ngModel
+      required
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+    />
+    <label
+      for="lastName"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+    >
+      Last Name
+    </label>
   </div>
 
-  <button type="submit" [disabled]="registerForm.invalid"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+  <!-- CIN -->
+  <div class="relative z-0 w-full mb-5 group">
+    <input
+      name="cin"
+      ngModel
+      required
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+    />
+    <label
+      for="cin"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+    >
+      CIN
+    </label>
+  </div>
+
+  <!-- Nationality -->
+  <div class="relative z-0 w-full mb-5 group">
+    <input
+      name="nationality"
+      ngModel
+      required
+      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+      placeholder=" "
+    />
+    <label
+      for="nationality"
+      class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+    >
+      Nationality
+    </label>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="!registerForm.valid"
+    class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+  >
     Submit
   </button>
-
-  <div class="text-center mt-5">
-    <a routerLink="/login" class="text-blue-600 hover:underline dark:text-blue-500">have an account?</a>
-  </div>
 </form>
