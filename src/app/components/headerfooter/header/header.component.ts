@@ -12,10 +12,18 @@ export class HeaderComponent {
 
   constructor(private router: Router) {}
 
-  checkPath(): boolean {
-    const path = this.router.url;
-    console.log(path);
-    return path === '/login' || path === '/register';
+  checkTocken(): boolean {
+    // const path = this.router.url;
+    // console.log(path);
+    if(localStorage.getItem('authToken') !== null) {
+        // console.log(localStorage.getItem('authToken'));
+        // console.log('false');
+        // return path === '/login' || path === '/register';
+        return false;
+      }
+      console.log('false');
+      return true;
+
   }
 
 }
