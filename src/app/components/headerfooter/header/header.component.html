@@ -20,6 +20,9 @@
             Home
           </a>
         </li>
+
+        @if (!checkTocken()) {
+
         <li>
           <a routerLink="/services"
              routerLinkActive="text-blue-700 md:dark:text-blue-500"
@@ -43,7 +46,10 @@
         </li>
 
 
+      }
+
         @if (checkTocken()) {
+
         <li>
           <a routerLink="/login"
              routerLinkActive="text-blue-700 md:dark:text-blue-500"
@@ -62,6 +68,15 @@
       }
 
 
+
+      <li *ngIf="!checkTocken()">
+        <a routerLink="/register"
+        (click)="logout()"
+        routerLinkActive="text-blue-700 md:dark:text-blue-500"
+           class=" block py-2 px-3 md:p-0 text-gray-900 rounded hover:text-blue-700 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:text-blue-500">
+          Logout
+        </a>
+      </li>
       </ul>
 
     </div>

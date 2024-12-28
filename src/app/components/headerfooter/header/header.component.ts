@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink , RouterLinkActive],
+  imports: [RouterLink , RouterLinkActive , CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -23,7 +24,11 @@ export class HeaderComponent {
       }
       console.log('false');
       return true;
-
   }
+
+    logout() : void{
+          localStorage.removeItem('authToken');
+          this.router.navigate(['/login']);
+        }
 
 }
