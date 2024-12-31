@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthServiceService } from '../../../services/auth-service/auth-service.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink , RouterLinkActive , CommonModule],
+  imports: [RouterLink , RouterLinkActive , CommonModule , HttpClientModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router , private http : HttpClient) {}
+  service : AuthServiceService = new AuthServiceService(this.http , this.router);
 
   checkTocken(): boolean {
     // const path = this.router.url;
@@ -27,8 +30,7 @@ export class HeaderComponent {
   }
 
     logout() : void{
-          localStorage.removeItem('authToken');
-          this.router.navigate(['/login']);
+        this.service.logout();
         }
 
 }

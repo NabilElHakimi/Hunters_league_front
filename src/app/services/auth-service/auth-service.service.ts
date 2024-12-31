@@ -8,7 +8,6 @@ import { Injectable } from '@angular/core';
 })
 
 
-
 export class AuthServiceService {
 
 
@@ -42,6 +41,39 @@ export class AuthServiceService {
       },
     });
 
+  }
+
+
+  register(formData : FormsModule) {
+    const registerUrl = this.url+"register";
+    console.log(registerUrl);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+    };
+
+    this.http.post<{ token: string }>(registerUrl, formData, httpOptions).subscribe({
+      next: (response) => {
+        this.login(formData);
+        console.log('Registration successful:', response);
+        localStorage.setItem('authToken', response.token);
+
+        this.router.navigate(['/home']);
+        alert('Registration successful');
+      },
+      error: (error) => {
+        console.error('Registration failed:', error);
+        alert('Registration failed. Please check your credentials.');
+      },
+    });
+
+  }
+
+  logout() {
+    localStorage.removeItem('authToken');
+    this.router.navigate(['/login']);
   }
 
 }

@@ -3,7 +3,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthServiceService } from '../../../services/auth-service.service';
+import { AuthServiceService } from '../../../services/auth-service/auth-service.service';
 
 @Component({
   selector: 'app-login-form',
@@ -19,6 +19,9 @@ export class LoginFormComponent {
   service : AuthServiceService  = new AuthServiceService (this.http , this.router);
 
   onSubmit(formData: any) {
+    console.log(formData)
     this.service.login(formData);
   }
+
+
 }

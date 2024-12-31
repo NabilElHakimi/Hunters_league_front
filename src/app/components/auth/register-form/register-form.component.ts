@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthServiceService } from '../../../services/auth-service/auth-service.service';
 
 @Component({
   selector: 'app-register-form',
@@ -12,20 +13,14 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./register-form.component.css']
 })
 export class RegisterFormComponent {
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient , private router : Router) {}
+
+  service : AuthServiceService = new AuthServiceService(this.http, this.router);
 
   onSubmit(formData: any) {
-    console.log('Form Data:', formData);
-
-    this.http.post('http://localhost:8443/api/auth/register', formData).subscribe({
-      next: (response) => {
-        console.log('Registration successful:', response);
-        alert('Registration successful!');
-      },
-      error: (error) => {
-        console.error('Registration failed:', error);
-        alert('Registration failed. Please try again.');
-      }
-    });
+    console.log(formData)
+    this.service.register(formData);
   }
+
 }
