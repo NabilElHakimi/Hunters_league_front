@@ -1,4 +1,4 @@
-<section class="relative bg-gray-900 text-white py-32">
+<section class="relative bg-gray-900 text-white h-[95vh] flex flex-col items-center justify-center">
   <!-- Background Image -->
   <div class="absolute inset-0">
     <img src="../../../../assets/images/bg1.jpg"
@@ -18,9 +18,18 @@
     </p>
     <!-- Call to Action -->
     <div class="mt-6">
-      <a href="#competitions" class="inline-block px-8 py-3 rounded-full bg-yellow-400 text-gray-900 font-semibold hover:bg-yellow-500 transition duration-300">
+      <a class="inline-block px-8 py-3 rounded-full bg-yellow-400 text-gray-900 font-semibold hover:bg-yellow-500 transition duration-300">
         Explore Competitions
       </a>
     </div>
   </div>
+
+  <!-- Scroll Button -->
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+    <button (click)="scrollByHalf()"
+            class="inline-block px-6 py-3 rounded-full border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-gray-900 transition duration-300">
+      Scroll Down
+    </button>
+  </div>
 </section>
+
