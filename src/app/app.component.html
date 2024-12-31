@@ -1,9 +1,15 @@
 <div class="flex justify-between flex-col h-[100vh]">
-
-    <app-header class="z-50"></app-header>
-    <main class="mt-[5vh] mb-10">
-      <router-outlet></router-outlet>
-    </main>
-    <app-footer></app-footer>
-
+  <app-header class="z-50"></app-header>
+  <main class="mt-[5vh] mb-10">
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer></app-footer>
 </div>
+
+<!-- Scroll to Top Button -->
+<button
+  *ngIf="showScrollToTop"
+  (click)="scrollToTop()"
+  class="fixed bottom-10 right-10 w-10 h-10 bg-yellow-400 text-gray-900 rounded-full shadow-lg hover:bg-yellow-500 transition duration-300">
+  ↑
+</button>
