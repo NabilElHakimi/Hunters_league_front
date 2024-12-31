@@ -3,6 +3,7 @@ import { CompetitionCardComponent } from '../../components/cards/competition-car
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WelcomeCardComponent } from '../../components/cards/welcome-card/welcome-card.component';
 
 interface Competition {
   id: string;
@@ -22,7 +23,8 @@ interface Competition {
             CommonModule ,
             HttpClientModule ,
             ReactiveFormsModule,
-            FormsModule
+            FormsModule ,
+            WelcomeCardComponent
     ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

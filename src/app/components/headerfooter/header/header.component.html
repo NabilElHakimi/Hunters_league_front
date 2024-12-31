@@ -1,8 +1,8 @@
-<nav class="border-gray-800 bg-gray-800 fixed w-full">
+<nav class="border-gray-900 bg-gray-900 fixed w-full shadow-lg">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <!-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> -->
-      <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Hunters</span>
+      <!-- Logo or Title -->
+      <span class="self-center text-2xl font-semibold whitespace-nowrap text-yellow-400">Hunters</span>
     </a>
     <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
@@ -11,11 +11,11 @@
       </svg>
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-      <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-800 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+      <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-900 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
         <li>
           <a routerLink="/home"
-             routerLinkActive="text-blue-500"
-             class="block py-2 px-3 md:p-0 text-white rounded hover:text-blue-500">
+             routerLinkActive="text-yellow-400"
+             class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
             Home
           </a>
         </li>
@@ -23,22 +23,22 @@
         @if (!checkTocken()) {
           <li>
             <a routerLink="/services"
-               routerLinkActive="text-blue-500"
-               class="block py-2 px-3 md:p-0 text-white rounded hover:text-blue-500">
+               routerLinkActive="text-yellow-400"
+               class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Services
             </a>
           </li>
           <li>
             <a routerLink="/pricing"
-               routerLinkActive="text-blue-500"
-               class="block py-2 px-3 md:p-0 text-white rounded hover:text-blue-500">
+               routerLinkActive="text-yellow-400"
+               class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Pricing
             </a>
           </li>
           <li>
             <a routerLink="/contact"
-               routerLinkActive="text-blue-500"
-               class="block py-2 px-3 md:p-0 text-white rounded hover:text-blue-500">
+               routerLinkActive="text-yellow-400"
+               class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Contact
             </a>
           </li>
@@ -47,15 +47,15 @@
         @if (checkTocken()) {
           <li>
             <a routerLink="/login"
-               routerLinkActive="text-blue-500"
-               class="block py-2 px-3 md:p-0 text-white rounded hover:text-blue-500">
+               routerLinkActive="text-yellow-400"
+               class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Login
             </a>
           </li>
           <li>
             <a routerLink="/register"
-               routerLinkActive="text-blue-500"
-               class="block py-2 px-3 md:p-0 text-white rounded hover:text-blue-500">
+               routerLinkActive="text-yellow-400"
+               class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Register
             </a>
           </li>
@@ -63,8 +63,8 @@
 
         <li *ngIf="!checkTocken()">
           <a (click)="logout()"
-             routerLinkActive="text-blue-500"
-             class="block py-2 px-3 md:p-0 text-white rounded hover:text-blue-500">
+             routerLinkActive="text-yellow-400"
+             class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
             Logout
           </a>
         </li>
