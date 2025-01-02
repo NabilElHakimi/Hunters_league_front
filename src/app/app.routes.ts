@@ -31,6 +31,7 @@ export const routes: Routes = [
     path: 'speices',
     component: SpeciesPageComponent,
     canActivate: [AuthGuard],
+    
   }
 ];
 
