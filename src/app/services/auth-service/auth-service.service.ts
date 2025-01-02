@@ -48,13 +48,8 @@ export class AuthServiceService {
     const registerUrl = this.url+"register";
     console.log(registerUrl);
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-    };
-
-    this.http.post<{ token: string }>(registerUrl, formData, httpOptions).subscribe({
+  
+    this.http.post<{ token: string }>(registerUrl, formData).subscribe({
       next: (response) => {
         this.login(formData);
         console.log('Registration successful:', response);

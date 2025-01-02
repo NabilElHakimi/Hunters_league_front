@@ -4,13 +4,14 @@ import { LoginFormComponent } from './components/auth/login-form/login-form.comp
 import { RegisterFormComponent } from './components/auth/register-form/register-form.component';
 import { HomePageComponent } from './layouts/home-page/home-page.component';
 import { AuthGuard } from './auth.guard';
+import { SpeciesPageComponent } from './layouts/species-page/species-page.component';
 
 export const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-    
+
 
   },
   {
@@ -25,6 +26,11 @@ export const routes: Routes = [
   {
     path: 'register',
     component: RegisterFormComponent
+  },
+  {
+    path: 'speices',
+    component: SpeciesPageComponent,
+    canActivate: [AuthGuard],
   }
 ];
 

@@ -3,7 +3,6 @@
   import { HeaderComponent } from './components/headerfooter/header/header.component';
   import { FooterComponent } from './components/headerfooter/footer/footer.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { CommonModule } from '@angular/common';
 
   @Component({
@@ -12,13 +11,7 @@ import { CommonModule } from '@angular/common';
     imports: [RouterOutlet, HeaderComponent, FooterComponent , CommonModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    providers: [
-      {
-        provide: HTTP_INTERCEPTORS,
-        useClass: AuthInterceptor,
-        multi: true,
-      },
-    ],
+    
   })
   export class AppComponent {
     title = 'Hunters_league_front';
@@ -38,6 +31,6 @@ import { CommonModule } from '@angular/common';
         top: 0,
         behavior: 'smooth' // Smooth scrolling
       });
-    } 
+    }
 
   }
