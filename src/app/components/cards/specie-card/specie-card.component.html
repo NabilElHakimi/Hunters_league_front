@@ -1,52 +1,99 @@
 <div class="w-full grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 px-10 lg:px-48 py-10">
   @for (species of speciesList ; track species.id) {
-    <div class="relative w-full max-w-lg bg-gray-900 shadow-xl rounded-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition-transform duration-300">
+    <div class="relative w-full bg-gradient-to-r from-gray-800 to-gray-900 shadow-2xl rounded-xl overflow-hidden hover:scale-105  transition-transform duration-300">
       <!-- Background Image -->
-      <div class="absolute inset-0">
-        <img src="https://imgs.search.brave.com/jBU1XSnzK87_Urt0HSJyUmJiAW9xJJIUTr_UlA3L1uY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxOS8x/Mi8wNS8xMC8wMS9m/b3Jlc3QtNDY3NDcw/M182NDAuanBn"
-             alt="Species Background"
-             class="w-full h-full object-cover opacity-30">
+      <div class="relative w-full h-48">
+        <img
+          src="./../../../../assets/images/militaire.jpg"
+          alt="Species Background"
+          class="w-full h-full object-cover opacity-70"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
       </div>
 
       <!-- Content -->
-      <div class="relative p-8 z-10 text-white">
+      <div class="p-6 text-white">
         <!-- Name -->
-        <h1 class="text-xl font-bold mb-4 drop-shadow-lg text-yellow-400">
+        <h1 class="text-2xl font-bold text-yellow-400 mb-3">
           {{species.name}}
         </h1>
 
         <!-- Details -->
-        <div class="mt-4 space-y-5">
+        <div class="space-y-4">
           <!-- Category -->
-          <div class="flex items-center text-yellow-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5z" />
+          <div class="flex items-center text-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 mr-2 text-yellow-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5z"
+              />
             </svg>
-            <span class="text-white">Category: {{species.category}}</span>
+            <span class="text-gray-300">Category: <span class="text-yellow-400">{{species.category}}</span></span>
           </div>
 
           <!-- Minimum Weight -->
-          <div class="flex items-center text-yellow-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 12h12M6 16h12m-9-8h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <div class="flex items-center text-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 mr-2 text-yellow-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 12h12M6 16h12m-9-8h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
             </svg>
-            <span class="text-white">Minimum Weight: {{species.minimumWeight}} kg</span>
+            <span class="text-gray-300">Min Weight: <span class="text-yellow-400">{{species.minimumWeight}} kg</span></span>
           </div>
 
           <!-- Difficulty -->
-          <div class="flex items-center text-yellow-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7m-5 6v6m-4 0h8" />
+          <div class="flex items-center text-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 mr-2 text-yellow-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 11l7-7 7 7m-5 6v6m-4 0h8"
+              />
             </svg>
-            <span class="text-white">Difficulty: {{species.difficulty}}</span>
+            <span class="text-gray-300">Difficulty: <span class="text-yellow-400">{{species.difficulty}}</span></span>
           </div>
 
           <!-- Points -->
-          <div class="flex items-center text-yellow-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8" />
+          <div class="flex items-center text-sm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 mr-2 text-yellow-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v8m4-4H8"
+              />
             </svg>
-            <span class="text-white">Points: {{species.points}}</span>
+            <span class="text-gray-300">Points: <span class="text-yellow-400">{{species.points}}</span></span>
           </div>
         </div>
       </div>

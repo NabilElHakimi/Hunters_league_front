@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SpeciesService {
-  private readonly BASE_URL = 'http://localhost:8443/api/species';
+  private readonly BASE_URL =  'http://localhost:8443/api/species';
+
 
   constructor(private httpClient: HttpClient) {}
 

@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-specie-card',
@@ -15,7 +17,7 @@ export class SpecieCardComponent implements OnInit {
   totalPages = 0;
   isLoading = false;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -29,7 +31,7 @@ export class SpecieCardComponent implements OnInit {
     this.isLoading = true;
 
     this.httpClient
-      .get(`http://localhost:8443/api/species/list?page=${this.currentPage}&size=${this.pageSize}`)
+      .get(environment.apiUrl + `/species/list?page=${this.currentPage}&size=${this.pageSize}`)
       .subscribe(
         (response: any) => {
           this.speciesList = [...this.speciesList, ...response.content];
@@ -38,8 +40,15 @@ export class SpecieCardComponent implements OnInit {
           this.isLoading = false;
         },
         (error) => {
-          console.error('Error fetching speciesList:', error);
           this.isLoading = false;
+
+          // Vérifier si l'erreur est un 403 Forbidden
+          if (error.status === 403) {
+            console.warn('Access denied. Redirecting to login page...');
+            this.router.navigate(['/login']); // Redirige vers la page de connexion
+          } else {
+            console.error('Error fetching speciesList:', error);
+          }
         }
       );
   }

@@ -2,6 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,8 @@ export class AuthServiceService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  url = "http://localhost:8443/api/auth/"
-
   login(formData : FormsModule) {
-      const loginUrl = this.url+"login";
+      const loginUrl = environment.apiUrl +"/auth/login";
       console.log(loginUrl);
 
     const httpOptions = {
@@ -45,10 +44,10 @@ export class AuthServiceService {
 
 
   register(formData : FormsModule) {
-    const registerUrl = this.url+"register";
+    const registerUrl = environment.apiUrl +"/auth/register";
     console.log(registerUrl);
 
-  
+
     this.http.post<{ token: string }>(registerUrl, formData).subscribe({
       next: (response) => {
         this.login(formData);
