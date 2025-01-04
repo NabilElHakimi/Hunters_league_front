@@ -1,22 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { environment } from '../../../../environments/environment';
+import { CompetitionService } from '../../../services/competition-service/competition.service';
 
 @Component({
   selector: 'app-competition-card',
   standalone: true, // Mark as standalone
-  imports: [CommonModule, HttpClientModule], // Required dependencies
+  imports: [CommonModule, HttpClientModule , RouterLink], // Required dependencies
   templateUrl: './competition-card.component.html',
   styleUrls: ['./competition-card.component.css'],
 })
 export class CompetitionCardComponent implements OnInit {
+
+
   competitions: any[] = [];
   currentPage = 0;
   pageSize = 9;
   totalPages = 0;
   isLoading = false;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient , private   competitionService : CompetitionService) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -54,4 +59,9 @@ export class CompetitionCardComponent implements OnInit {
       this.fetchData();
     }
   }
+
+  participate(competitionId : string){
+      this.competitionService.participate(competitionId);
+  }
+
 }

@@ -5,6 +5,7 @@ import { RegisterFormComponent } from './components/auth/register-form/register-
 import { HomePageComponent } from './layouts/home-page/home-page.component';
 import { AuthGuard } from './auth.guard';
 import { SpeciesPageComponent } from './layouts/species-page/species-page.component';
+import { ResultPageComponent } from './layouts/result-page/result-page.component';
 
 export const routes: Routes = [
   {
@@ -31,7 +32,11 @@ export const routes: Routes = [
     path: 'speices',
     component: SpeciesPageComponent,
     canActivate: [AuthGuard],
-    
+  },
+  {
+    path: 'results',
+    component: ResultPageComponent,
+    canActivate: [AuthGuard],
   }
 ];
 
