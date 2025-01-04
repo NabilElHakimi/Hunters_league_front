@@ -32,7 +32,6 @@ export class CompetitionService {
       (error) => {
         const errorMessage = error?.error || 'An unexpected error occurred.';
 
-        // Popup pour erreur
         Swal.fire({
           icon: 'error',
           title: 'Failed to participate',
