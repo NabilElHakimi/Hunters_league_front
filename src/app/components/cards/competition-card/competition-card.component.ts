@@ -52,6 +52,7 @@ export class CompetitionCardComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onScroll(): void {
+
     const scrollPosition = window.scrollY + window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
