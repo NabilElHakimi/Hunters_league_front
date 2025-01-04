@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../environments/environment.prod';
 import { CompetitionService } from '../../../services/competition-service/competition.service';
 
 @Component({
@@ -35,7 +35,7 @@ export class CompetitionCardComponent implements OnInit {
     this.isLoading = true;
 
     this.httpClient
-      .get(`http://localhost:8443/api/competition/details?page=${this.currentPage}&size=${this.pageSize}`)
+      .get(`${environment.apiUrl}/competition/details?page=${this.currentPage}&size=${this.pageSize}`)
       .subscribe(
         (response: any) => {
           this.competitions = [...this.competitions, ...response.content];

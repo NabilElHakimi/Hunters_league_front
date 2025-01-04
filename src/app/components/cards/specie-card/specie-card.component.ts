@@ -1,12 +1,13 @@
+// src/app/specie-card/specie-card.component.ts
+
 import { Component, HostListener, OnInit } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { environment } from '../../../../environments/environment';
+import { SpeciesService } from '../../../services/specie/specie.service';
 
 @Component({
   selector: 'app-specie-card',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [],
   templateUrl: './specie-card.component.html',
   styleUrls: ['./specie-card.component.css'],
 })
@@ -17,7 +18,7 @@ export class SpecieCardComponent implements OnInit {
   totalPages = 0;
   isLoading = false;
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private speciesService: SpeciesService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchData();
@@ -30,27 +31,19 @@ export class SpecieCardComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.httpClient
-      .get(environment.apiUrl + `/species/list?page=${this.currentPage}&size=${this.pageSize}`)
-      .subscribe(
-        (response: any) => {
-          this.speciesList = [...this.speciesList, ...response.content];
-          this.totalPages = response.totalPages;
-          this.currentPage++;
-          this.isLoading = false;
-        },
-        (error) => {
-          this.isLoading = false;
-
-          // Vérifier si l'erreur est un 403 Forbidden
-          if (error.status === 403) {
-            console.warn('Access denied. Redirecting to login page...');
-            this.router.navigate(['/login']); // Redirige vers la page de connexion
-          } else {
-            console.error('Error fetching speciesList:', error);
-          }
-        }
-      );
+    this.speciesService.getSpecies(this.currentPage, this.pageSize).subscribe(
+      (response: any) => {
+        console.log('Response received:', response);
+        this.speciesList = [...this.speciesList, ...response.content];
+        this.totalPages = response.totalPages;
+        this.currentPage++;
+        this.isLoading = false;
+      },
+      (error) => {
+        this.isLoading = false;
+        console.error('Error fetching speciesList:', error);
+      }
+    );
   }
 
   @HostListener('window:scroll', [])
