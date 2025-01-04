@@ -8,7 +8,7 @@ import { CompetitionService } from '../../../services/competition-service/compet
 @Component({
   selector: 'app-competition-card',
   standalone: true, // Mark as standalone
-  imports: [CommonModule, HttpClientModule , RouterLink], // Required dependencies
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './competition-card.component.html',
   styleUrls: ['./competition-card.component.css'],
 })
