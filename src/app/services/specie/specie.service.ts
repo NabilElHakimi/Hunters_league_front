@@ -10,8 +10,8 @@ export class SpeciesService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getSpecies(page: number, size: number): Observable<any> {
+  getSpecies(page: number, size: number) {
     return this.httpClient.get(`${environment.apiUrl}/species/list?page=${page}&size=${size}`);
   }
-  
+
 }
