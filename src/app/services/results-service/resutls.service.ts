@@ -11,7 +11,7 @@ export class ResutlsService {
   constructor(private http : HttpClient , private router : Router) { }
 
 
-  getResults(){   
-    return this.http.get(environment.apiUrl + '/participation/getMyHistoric');
+  getResults(){
+    return this.http.get(environment.apiUrl + '/participation/getMyResult');
   }
 }

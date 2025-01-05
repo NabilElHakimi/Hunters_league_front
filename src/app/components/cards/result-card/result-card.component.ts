@@ -21,7 +21,7 @@ export class ResultCardComponent implements OnInit {
   getResults() {
     console.log("getResults");
     this.resultService.getResults().subscribe((data: any) => {
-      this.pastCompetitions = data.pastCompetitions;
+      this.pastCompetitions = data.competitions;
       console.log(this.pastCompetitions);
       this.isLoading = false;
     });

@@ -6,6 +6,7 @@ import { HomePageComponent } from './layouts/home-page/home-page.component';
 import { AuthGuard } from './auth.guard';
 import { SpeciesPageComponent } from './layouts/species-page/species-page.component';
 import { ResultPageComponent } from './layouts/result-page/result-page.component';
+import { TopThreePageComponent } from './layouts/top-three-page/top-three-page.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,11 @@ export const routes: Routes = [
   {
     path: 'results',
     component: ResultPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'top-three',
+    component: TopThreePageComponent,
     canActivate: [AuthGuard],
   }
 ];
