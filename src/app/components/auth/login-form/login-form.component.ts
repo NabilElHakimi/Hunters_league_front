@@ -23,5 +23,4 @@ export class LoginFormComponent {
     this.service.login(formData);
   }
 
-
 }
