@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { CanActivate,Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
+export class MemberGuard implements CanActivate {
 
-export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private hasMemberRole(decodedToken: any): boolean {
-    return decodedToken.roles?.some((role: { authority: string }) => role.authority === 'ROLE_MEMBER') || false;
+    return decodedToken.roles?.some((role: { authority: string }) => role.authority === 'ROLE_ADMIN') || false;
   }
 
 }

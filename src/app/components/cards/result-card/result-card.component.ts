@@ -31,6 +31,6 @@ export class ResultCardComponent implements OnInit {
     this.getResults();
   }
 
-  
+
 
 }
