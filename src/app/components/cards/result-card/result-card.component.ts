@@ -27,12 +27,10 @@ export class ResultCardComponent implements OnInit {
     });
   }
 
-  trackByCompetitionId(index: number, competition: any): any {
-    return competition.id;
-  }
-
   ngOnInit(): void {
     this.getResults();
   }
+
+  
 
 }

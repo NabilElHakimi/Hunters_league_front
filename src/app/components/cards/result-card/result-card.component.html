@@ -1,7 +1,7 @@
 <app-loader [isLoading]="isLoading"></app-loader>
 
 <div class="w-full grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 px-10 lg:px-48 py-10">
-  <div *ngFor="let competition of pastCompetitions; trackBy: trackByCompetitionId" class="relative w-full max-w-lg bg-gray-900 shadow-xl rounded-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition-transform duration-300">
+  <div *ngFor="let competition of pastCompetitions;" class="relative w-full max-w-lg bg-gray-900 shadow-xl rounded-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition-transform duration-300">
     <div class="absolute inset-0">
       <img src="../../../../assets/images/home_bg-scaled.jpeg" alt="Results Background" class="w-full h-full object-cover opacity-30">
     </div>
