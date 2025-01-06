@@ -5,6 +5,7 @@ import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
+
 export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
@@ -28,4 +29,5 @@ export class AuthGuard implements CanActivate {
   private hasMemberRole(decodedToken: any): boolean {
     return decodedToken.roles?.some((role: { authority: string }) => role.authority === 'ROLE_MEMBER') || false;
   }
+
 }
