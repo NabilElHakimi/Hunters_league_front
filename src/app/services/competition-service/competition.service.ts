@@ -36,12 +36,14 @@ export class CompetitionService {
               const successMessage = response?.message || 'You have successfully registered for the competition.';
               this.popupService.showSuccessPopup('Participation successful!', successMessage);
             },
+
             (error) => {
-              const errorMessage = error?.error?.message || 'An unexpected error occurred.';
+              const errorMessage = error?.error || 'An unexpected error occurred.';
               this.popupService.showErrorPopup('Failed to participate', errorMessage);
               console.error('Error while participating in competition:', error);
             }
           );
+          
         } else {
           console.log('Participation was canceled');
         }
