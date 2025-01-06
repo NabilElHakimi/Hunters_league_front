@@ -22,3 +22,26 @@ body
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Style général du scroller */
+::-webkit-scrollbar {
+  width: 5px; /* Largeur de la barre de défilement */
+}
+
+/* Style du rail du scroller */
+::-webkit-scrollbar-track {
+  background: #1F2937 /* Couleur du fond de la barre */
+}
+
+/* Style de la partie active du scroller */
+::-webkit-scrollbar-thumb {
+  background: #F59E0B ; /* Couleur de la barre de défilement */
+  border-radius: 4px; /* Rendre les bords arrondis */
+}
+
+/* Style sur hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #F59E0B  ;/* Couleur lors du survol */
+}
+
