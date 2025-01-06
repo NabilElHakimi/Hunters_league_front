@@ -12,6 +12,6 @@ export class ResutlsService {
 
 
   getResults(){
-    return this.http.get(environment.apiUrl + '/participation/getMyResult');
+    return this.http.get(environment.apiUrl + '/participation/getMyHistoric');
   }
 }
