@@ -1,0 +1,142 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">Code</th>
+        <th scope="col" class="px-6 py-3">Location</th>
+        <th scope="col" class="px-6 py-3">Date</th>
+        <th scope="col" class="px-6 py-3">Species Type</th>
+        <th scope="col" class="px-6 py-3">Participants</th>
+        <th scope="col" class="px-6 py-3">Registration</th>
+        <th scope="col" class="px-6 py-3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let item of data; let i = index"
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+        <td class="px-6 py-4">{{ item.code }}</td>
+        <td class="px-6 py-4">{{ item.location }}</td>
+        <td class="px-6 py-4">{{ item.date | date: 'mediumDate' }}</td>
+        <td class="px-6 py-4">{{ item.speciesType }}</td>
+        <td class="px-6 py-4">{{ item.minParticipants }} - {{ item.maxParticipants }}</td>
+        <td class="px-6 py-4">
+          <span
+            [ngClass]="item.openRegistration ? 'text-green-500' : 'text-red-500'">
+            {{ item.openRegistration ? 'Open' : 'Closed' }}
+          </span>
+        </td>
+        <td class="px-6 py-4 flex gap-2">
+          <button
+            (click)="editItem(item, i)"
+            class="text-blue-600 dark:text-blue-500 hover:underline">
+            Update
+          </button>
+          <button
+            (click)="deleteItem(i)"
+            class="text-red-600 dark:text-red-500 hover:underline">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Formulaire d'Update -->
+<div
+  *ngIf="editingIndex !== null"
+  class="mt-6 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-md">
+  <h3 class="text-lg font-bold mb-4 text-gray-700 dark:text-gray-300">Update Entry</h3>
+  <form (submit)="updateItem()">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div>
+        <label for="code" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Code</label>
+        <input
+          id="code"
+          type="text"
+          [(ngModel)]="editingItem.code"
+          name="code"
+          class="mt-1 block w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+          required>
+      </div>
+      <div>
+        <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Location</label>
+        <input
+          id="location"
+          type="text"
+          [(ngModel)]="editingItem.location"
+          name="location"
+          class="mt-1 block w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+          required>
+      </div>
+      <div>
+        <label for="date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Date</label>
+        <input
+          id="date"
+          type="date"
+          [(ngModel)]="editingItem.date"
+          name="date"
+          class="mt-1 block w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+          required>
+      </div>
+      <div>
+        <label for="speciesType" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Species Type</label>
+        <input
+          id="speciesType"
+          type="text"
+          [(ngModel)]="editingItem.speciesType"
+          name="speciesType"
+          class="mt-1 block w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+          required>
+      </div>
+      <div>
+        <label for="participants" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Participants</label>
+        <div class="flex gap-2">
+          <input
+            id="minParticipants"
+            type="number"
+            [(ngModel)]="editingItem.minParticipants"
+            name="minParticipants"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            placeholder="Min" required>
+          <input
+            id="maxParticipants"
+            type="number"
+            [(ngModel)]="editingItem.maxParticipants"
+            name="maxParticipants"
+            class="mt-1 block w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600"
+            placeholder="Max" required>
+        </div>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Registration</label>
+        <select
+          [(ngModel)]="editingItem.openRegistration"
+          name="openRegistration"
+          class="mt-1 block w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-700 dark:text-white dark:border-gray-600">
+          <option [value]="true">Open</option>
+          <option [value]="false">Closed</option>
+        </select>
+      </div>
+    </div>
+    <div class="mt-4 flex justify-end gap-2">
+      <button type="button" (click)="cancelEdit()" class="px-4 py-2 bg-gray-300 rounded-lg text-gray-700 dark:bg-gray-600 dark:text-gray-300">
+        Cancel
+      </button>
+      <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+
+
+<div class="mt-6">
+  <button type="button" class="text-white
+   bg-blue-700 hover:bg-blue-800 focus:ring-4
+    focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2
+     dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+     {{currentPage + 1}}
+    </button>
+</div>

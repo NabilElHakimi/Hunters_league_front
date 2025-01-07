@@ -1,13 +1,12 @@
+import { CheckRoleService } from './../services/check-role/check-role.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MemberGuard implements CanActivate {
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private checkRoleService: CheckRoleService) {}
 
   canActivate(): boolean {
     const token = localStorage.getItem('authToken');
@@ -17,18 +16,11 @@ export class MemberGuard implements CanActivate {
       return false;
     }
 
-    const decodedToken = jwtDecode(token);
-    if (!decodedToken || !this.hasMemberRole(decodedToken)) {
+    if (this.checkRoleService.checkRole('MEMBER')) {
+      return true;
+    } else {
       this.router.navigate(['/login']);
       return false;
     }
-
-    return true;
   }
-
-  private hasMemberRole(decodedToken: any): boolean {
-    return decodedToken.roles?.some((role: { authority: string }) => role.authority === 'ROLE_MEMBER') || false;
-  }
-
-
 }

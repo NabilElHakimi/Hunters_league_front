@@ -7,6 +7,8 @@ import { SpeciesPageComponent } from './layouts/species-page/species-page.compon
 import { ResultPageComponent } from './layouts/result-page/result-page.component';
 import { TopThreePageComponent } from './layouts/top-three-page/top-three-page.component';
 import { MemberGuard } from './guards/member.guard';
+import { DashboardPageComponent } from './admins/views/dashboard-page/dashboard-page.component';
+import { CompetitionPageComponent } from './admins/views/competition-page/competition-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +25,14 @@ export const routes: Routes = [
       { path: 'species', component: SpeciesPageComponent },
       { path: 'results', component: ResultPageComponent },
       { path: 'top-three', component: TopThreePageComponent },
+    ],
+  },
+  {
+    path: 'admin',
+    component: DashboardPageComponent,
+    // canActivate: [AuthGuard, MemberGuard],
+    children: [
+      {path: 'competition' , component : CompetitionPageComponent}
     ],
   },
 

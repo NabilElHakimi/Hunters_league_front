@@ -1,3 +1,4 @@
+import { CheckRoleService } from './services/check-role/check-role.service';
   import { Component, HostListener, OnInit } from '@angular/core';
   import { Router, RouterOutlet } from '@angular/router';
   import { HeaderComponent } from './components/headerfooter/header/header.component';
@@ -11,26 +12,33 @@ import { CommonModule } from '@angular/common';
     imports: [RouterOutlet, HeaderComponent, FooterComponent , CommonModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    
+
   })
+
   export class AppComponent {
+
+    constructor(private router : Router) {}
+
     title = 'Hunters_league_front';
 
-    showScrollToTop = false; // Flag to control button visibility
+    showScrollToTop = false;
 
     @HostListener('window:scroll', [])
     onScroll(): void {
-      // Check if scrolled past 100% of the viewport height
       const scrolledPastFirstScreen = window.scrollY > window.innerHeight;
-      this.showScrollToTop = scrolledPastFirstScreen; // Show button only if scrolled past the first screen
+      this.showScrollToTop = scrolledPastFirstScreen;
     }
 
-    // Scroll to the top of the page
     scrollToTop(): void {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth' // Smooth scrolling
+        behavior: 'smooth'
       });
     }
 
-  }
+    checkHeaderFooter(): boolean {
+      return !this.router.url.startsWith('/admin');
+    }
+
+}
+

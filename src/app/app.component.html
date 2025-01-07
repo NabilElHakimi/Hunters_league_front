@@ -1,12 +1,11 @@
-<div class="flex justify-between flex-col h-[100vh]">
-  <app-header class="z-50"></app-header>
+<div class="flex justify-between flex-col h-[100vh]" >
+  <app-header class="z-50" *ngIf="checkHeaderFooter()"></app-header>
   <main class="mt-[5vh] mb-10">
     <router-outlet></router-outlet>
   </main>
-  <app-footer class="z-50"></app-footer>
+  <app-footer class="z-50" *ngIf="checkHeaderFooter()"></app-footer>
 </div>
 
-<!-- Scroll to Top Button -->
 <button
   *ngIf="showScrollToTop"
   (click)="scrollToTop()"
