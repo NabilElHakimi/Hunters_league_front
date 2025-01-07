@@ -1,8 +1,9 @@
+import { PopupService } from './../../../services/popup-service/popup.service';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompetitionService } from '../../services/competition-service/competition.service';
-import { PopupService } from '../../../services/popup-service/popup.service';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-competition-page',
@@ -107,13 +108,35 @@ export class CompetitionPageComponent {
   }
 
 
+  isModalOpen = false;
+
+  closeModal() {
+    this.isModalOpen = false;
+    console.log('close modal');
+  }
+
   items_for_update: any = {};
 
   chargeModale(item: any) {
-     this.items_for_update = item;
+    this.isModalOpen = true;
+    this.items_for_update = { ...item };
+     console.log(this.items_for_update);
   }
 
-  updateCompetition(){
-
+  updateCompetition(formData: any, id: string) {
+    this.competitionService.updateCompetition(formData, id).subscribe(
+      (response: any) => {
+        this.closeModal();
+        this.popup.showSuccessPopup('Success', 'Competition updated successfully');
+      },
+      (error) => {
+        this.popup.showErrorPopup('Error', 'Failed to update competition');
+        this.closeModal();
+        console.error('Error updating competition:', error);
+      }
+    );
   }
+
+
+
 }

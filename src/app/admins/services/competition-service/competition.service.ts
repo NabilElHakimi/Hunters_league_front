@@ -12,4 +12,8 @@ export class CompetitionService {
   getCompetitions(page : number){
     return this.http.get(environment.apiUrl+'/competition/details?page='+page);
   }
+
+  updateCompetition(data : any , id : string){
+    return this.http.put(environment.apiUrl+'/competition/update/'+ id , data);
+  }
 }
