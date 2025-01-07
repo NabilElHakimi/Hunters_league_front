@@ -133,6 +133,7 @@ export class CompetitionPageComponent {
       (response: any) => {
         this.closeModal();
         this.popup.showSuccessPopup('Success', 'Competition updated successfully');
+        this.loadPage(this.currentPage);
       },
       (error) => {
         this.popup.showErrorPopup('Error', 'Failed to update competition');
