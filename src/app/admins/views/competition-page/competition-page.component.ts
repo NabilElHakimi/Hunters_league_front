@@ -114,6 +114,8 @@ export class CompetitionPageComponent {
   location_modale = '';
   code_modale = '';
   type_modale = '';
+  min_modale = 0 ;
+  max_modale = 0 ;
 
   updateCompetition(item: any, index: number) {
     // console.log('updateCompetition', item, index);
@@ -121,9 +123,9 @@ export class CompetitionPageComponent {
     this.location_modale = item.location;
     this.date_modale = this.date_modale = new Date(item.date).toISOString().split('T')[0];;
     this.type_modale = item.speciesType;
+    this.min_modale = item.minParticipants;
+    this.max_modale = item.maxParticipants;
 
-}
-
-
+  }
 
 }
