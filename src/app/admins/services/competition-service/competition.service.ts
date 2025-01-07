@@ -16,4 +16,9 @@ export class CompetitionService {
   updateCompetition(data : any , id : string){
     return this.http.put(environment.apiUrl+'/competition/update/'+ id , data);
   }
+
+  createCompetition(data : any){
+    return this.http.post(environment.apiUrl+'/competition/create' , data);
+  }
+  
 }

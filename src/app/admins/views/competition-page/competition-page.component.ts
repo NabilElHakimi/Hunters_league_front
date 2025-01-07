@@ -142,6 +142,17 @@ export class CompetitionPageComponent {
     );
   }
 
-
-
+  createCompetition(formData: any) {
+    this.competitionService.createCompetition(formData).subscribe(
+      (response: any) => {
+        this.closeModalAdd();
+        this.popup.showSuccessPopup('Success', 'Competition created successfully');
+      },
+      (error) => {
+        this.popup.showErrorPopup('Error', 'Failed to create competition');
+        this.closeModalAdd();
+        console.error('Error creating competition:', error);
+      }
+    );
+  }
 }
