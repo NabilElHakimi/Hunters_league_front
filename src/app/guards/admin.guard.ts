@@ -6,7 +6,7 @@ import { CheckRoleService } from '../services/check-role/check-role.service';
 @Injectable({
   providedIn: 'root',
 })
-export class MemberGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   constructor(private router: Router , private checkRoleService : CheckRoleService ) {}
 

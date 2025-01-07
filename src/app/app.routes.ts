@@ -9,6 +9,7 @@ import { TopThreePageComponent } from './layouts/top-three-page/top-three-page.c
 import { MemberGuard } from './guards/member.guard';
 import { DashboardPageComponent } from './admins/views/dashboard-page/dashboard-page.component';
 import { CompetitionPageComponent } from './admins/views/competition-page/competition-page.component';
+import { AdminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -30,7 +31,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: DashboardPageComponent,
-    // canActivate: [AuthGuard, MemberGuard],
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       {path: 'competition' , component : CompetitionPageComponent}
     ],

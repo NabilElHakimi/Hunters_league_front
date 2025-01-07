@@ -99,15 +99,12 @@ export class CompetitionPageComponent {
 
   confirmDeleteItem(index: number) {
     this.popup.showConfirmationPopup('Delete' ,'Are you sure you want to delete this item?' ).then((confirmed) => {
-      if (confirmed) {
+      if (confirmed.isConfirmed) {
         this.deleteItem(index);
       }
     }
     );
   }
-
-
-
 
 
   date_modale = '';
@@ -126,6 +123,6 @@ export class CompetitionPageComponent {
     this.min_modale = item.minParticipants;
     this.max_modale = item.maxParticipants;
 
-  }
+}
 
 }
