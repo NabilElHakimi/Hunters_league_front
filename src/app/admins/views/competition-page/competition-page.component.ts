@@ -109,9 +109,14 @@ export class CompetitionPageComponent {
 
 
   isModalOpen = false;
+  isModalOpenAdd = false;
 
   closeModal() {
     this.isModalOpen = false;
+    console.log('close modal');
+  }
+  closeModalAdd() {
+    this.isModalOpenAdd = false;
     console.log('close modal');
   }
 
