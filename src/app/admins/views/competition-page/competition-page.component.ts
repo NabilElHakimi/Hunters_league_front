@@ -109,7 +109,11 @@ export class CompetitionPageComponent {
 
   items_for_update: any = {};
 
-  updateCompetition(item: any) {
-    this.items_for_update = item;
+  chargeModale(item: any) {
+     this.items_for_update = item;
+  }
+
+  updateCompetition(){
+
   }
 }
