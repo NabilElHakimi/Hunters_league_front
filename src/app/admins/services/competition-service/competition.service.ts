@@ -20,5 +20,7 @@ export class CompetitionService {
   createCompetition(data : any){
     return this.http.post(environment.apiUrl+'/competition/create' , data);
   }
-  
+
+    
+
 }
