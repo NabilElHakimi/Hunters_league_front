@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CompetitionService } from '../../services/competition-service/competition.service';
+import { PopupService } from '../../../services/popup-service/popup.service';
 
 @Component({
   selector: 'app-competition-page',
@@ -11,7 +12,7 @@ import { CompetitionService } from '../../services/competition-service/competiti
   styleUrl: './competition-page.component.css',
 })
 export class CompetitionPageComponent {
-  constructor(private competitionService: CompetitionService) {}
+  constructor(private competitionService: CompetitionService , private popup : PopupService) {}
 
   totalPage: number = 0;
   currentPage: number = 0;
@@ -45,7 +46,6 @@ export class CompetitionPageComponent {
     this.data.splice(index, 1);
   }
 
-  // Pagination Methods
   loadPage(page: number) {
     this.competitionService.getCompetitions(page).subscribe((d: any) => {
       this.data = d.content;
@@ -69,7 +69,7 @@ export class CompetitionPageComponent {
   getPages() {
     const pages = [];
     const totalPages = this.totalPage;
-    const windowSize = 5; 
+    const windowSize = 5;
 
     const startPage = Math.max(this.currentPage - 2, 0);
     const endPage = Math.min(this.currentPage + 2, totalPages - 1);
@@ -94,6 +94,36 @@ export class CompetitionPageComponent {
 
     return pages;
   }
+
+
+
+  confirmDeleteItem(index: number) {
+    this.popup.showConfirmationPopup('Delete' ,'Are you sure you want to delete this item?' ).then((confirmed) => {
+      if (confirmed) {
+        this.deleteItem(index);
+      }
+    }
+    );
+  }
+
+
+
+
+
+  date_modale = '';
+  location_modale = '';
+  code_modale = '';
+  type_modale = '';
+
+  updateCompetition(item: any, index: number) {
+    // console.log('updateCompetition', item, index);
+    this.code_modale = item.code;
+    this.location_modale = item.location;
+    this.date_modale = this.date_modale = new Date(item.date).toISOString().split('T')[0];;
+    this.type_modale = item.speciesType;
+
+}
+
 
 
 }
