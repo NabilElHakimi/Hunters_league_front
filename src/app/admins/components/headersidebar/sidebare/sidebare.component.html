@@ -1,10 +1,16 @@
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform"
+<div *ngIf="isClosed" class="bg-blue-600 shadow z-50 w-10 h-10 flex justify-center items-center rounded-r-full fixed left-0 shadow-black text-gray-100 cursor-pointer top-20"
+    (click)="toggleSidebar()">
+  <span id="toggle-text">></span>
+</div>
+
+<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform bg-white"
        [ngClass]="{'-translate-x-full': isClosed, 'translate-x-0': !isClosed}"
        aria-label="Sidebar">
-  <div class="bg-blue-600 w-10 h-10 flex justify-center items-center rounded-l-full fixed right-0 text-white cursor-pointer"
+  <div *ngIf="!isClosed" class="absolute bg-blue-600 w-10 h-10 flex justify-center items-center rounded-l-full right-0 text-white cursor-pointer"
        (click)="toggleSidebar()">
-    <span id="toggle-text">{{ isClosed ? '>>' : '<<' }}</span>
+    <span id="toggle-text">< </span>
   </div>
+
 
   <!-- Sidebar content -->
   <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
@@ -67,3 +73,10 @@
 </aside>
 
 
+<div *ngIf="!isClosed" class="p-4 pt-10 sm:ml-64 bg-gray-100 ">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="isClosed" class="p-4 pt-10 bg-gray-100 ">
+  <router-outlet></router-outlet>
+</div>
