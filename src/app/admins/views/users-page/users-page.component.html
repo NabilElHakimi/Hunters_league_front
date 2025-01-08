@@ -37,7 +37,7 @@ title="Add new competition"
   <table class="w-full text-sm text-left rtl:text-right text-gray-600 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
-        <th scope="col" class="px-4 py-3">image</th>
+        <th scope="col" class="px-4 py-3">Image</th>
         <th scope="col" class="px-4 py-3">First Name</th>
         <th scope="col" class="px-4 py-3">Last Name</th>
         <th scope="col" class="px-4 py-3">Username</th>
@@ -46,7 +46,7 @@ title="Add new competition"
         <th scope="col" class="px-4 py-3">CIN</th>
         <th scope="col" class="px-4 py-3">Nationality</th>
         <th scope="col" class="px-4 py-3">License Expiration</th>
-        <th scope="col " class="px-4 py-3">Join Date</th>
+        <th scope="col" class="px-4 py-3">Join Date</th>
         <th scope="col" class="px-4 py-3 w-[10%]">Actions</th>
       </tr>
     </thead>
@@ -55,39 +55,45 @@ title="Add new competition"
         *ngFor="let item of data"
         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
         <td class="px-4 py-3">
-          <div
-            class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold bg-gray-500"
-          >
+          <div class="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold bg-blue-600">
             {{ item.firstName.charAt(0) }}{{ item.lastName.charAt(0) }}
           </div>
         </td>
 
-
-
-        <td class="px-4 py-3">{{ item.firstName }}</td>
-        <td class="px-4 py-3">{{ item.lastName }}</td>
-        <td class="px-4 py-3">{{ item.username }}</td>
-        <td class="px-4 py-3">{{ item.email }}</td>
-        <td class="px-4 py-3">{{ item.role }}</td>
-        <td class="px-4 py-3">{{ item.cin }}</td>
-        <td class="px-4 py-3">{{ item.nationality }}</td>
-        <td class="px-4 py-3 ">
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.firstName }}">
+          {{ item.firstName }}
+        </td>
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.lastName }}">
+          {{ item.lastName }}
+        </td>
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.username }}">
+          {{ item.username }}
+        </td>
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.email }}">
+          {{ item.email }}
+        </td>
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.role }}">
+          {{ item.role }}
+        </td>
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.cin }}">
+          {{ item.cin }}
+        </td>
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.nationality }}">
+          {{ item.nationality }}
+        </td>
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.licenseExpirationDate | date: 'mediumDate' }}">
           {{ item.licenseExpirationDate | date: 'mediumDate' }}
         </td>
-        <td class="px-4 py-3 w-[10%]  ">
+        <td class="px-4 py-3 text-ellipsis overflow-hidden whitespace-nowrap" title="{{ item.joinDate | date: 'mediumDate' }}">
           {{ item.joinDate | date: 'mediumDate' }}
         </td>
-        <td class=" px-4 py-3 flex gap-2 ">
-          <button
-            title="update"
-            class="text-blue-600 dark:text-blue-600 hover:underline">
+        <td class="px-4 py-3 flex gap-2">
+          <button title="update" class="text-blue-600 dark:text-blue-600 hover:underline">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3l4 4-10 10H7v-4L17 3z"></path>
             </svg>
           </button>
-          <button
-            title="delete"
-            class="text-red-600 dark:text-red-600 hover:underline">
+          <button title="delete" class="text-red-600 dark:text-red-600 hover:underline">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -96,6 +102,7 @@ title="Add new competition"
       </tr>
     </tbody>
   </table>
+
 </div>
 
 
