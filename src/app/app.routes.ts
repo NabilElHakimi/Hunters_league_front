@@ -10,6 +10,7 @@ import { MemberGuard } from './guards/member.guard';
 import { DashboardPageComponent } from './admins/views/dashboard-page/dashboard-page.component';
 import { CompetitionPageComponent } from './admins/views/competition-page/competition-page.component';
 import { AdminGuard } from './guards/admin.guard';
+import { UsersPageComponent } from './admins/views/users-page/users-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -33,7 +34,8 @@ export const routes: Routes = [
     component: DashboardPageComponent,
     canActivate: [AuthGuard, AdminGuard],
     children: [
-      {path: 'competition' , component : CompetitionPageComponent}
+      {path: 'competitions' , component : CompetitionPageComponent},
+      {path: 'users' , component : UsersPageComponent}
     ],
   },
 

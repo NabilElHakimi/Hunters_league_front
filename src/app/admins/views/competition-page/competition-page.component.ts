@@ -4,11 +4,12 @@ import { Component, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompetitionService } from '../../services/competition-service/competition.service';
 import { catchError, of } from 'rxjs';
+import { LoaderAdminComponent } from "../../../components/loader-admin/loader-admin.component";
 
 @Component({
   selector: 'app-competition-page',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, LoaderAdminComponent],
   templateUrl: './competition-page.component.html',
   styleUrl: './competition-page.component.css',
 })
@@ -18,8 +19,10 @@ export class CompetitionPageComponent {
   totalPage: number = 0;
   currentPage: number = 0;
   data: any = [];
+  isLoading: boolean = false;
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.loadPage(this.currentPage);
   }
 
@@ -52,6 +55,7 @@ export class CompetitionPageComponent {
       this.data = d.content;
       this.totalPage = d.totalPages;
       this.currentPage = d.pageable.pageNumber;
+      this.isLoading = false;
     });
   }
 
@@ -127,6 +131,8 @@ export class CompetitionPageComponent {
     this.items_for_update = { ...item };
      console.log(this.items_for_update);
   }
+
+
 
   updateCompetition(formData: any, id: string) {
     this.competitionService.updateCompetition(formData, id).subscribe(

@@ -1,5 +1,6 @@
-
-<div class="w-full flex justify-end">
+<app-loader-admin *ngIf="isLoading"></app-loader-admin>
+<div *ngIf="!isLoading">
+<div class="w-full flex justify-end" >
 <button
 (click)="isModalOpenAdd = !isModalOpenAdd"
 title="Add new competition"
@@ -308,7 +309,4 @@ title="Add new competition"
   +
 </button> -->
 
-
-
-
-
+</div>
