@@ -13,4 +13,8 @@ export class UserService {
     return this.http.get(environment.apiUrl+ '/user/getAll?page=' + page);
   }
 
+  addUser(user: any) {
+    return this.http.post(environment.apiUrl+ '/user/update', user);
+  }
+
 }

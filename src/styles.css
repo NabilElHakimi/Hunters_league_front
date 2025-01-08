@@ -27,18 +27,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1F2937
+  background: #b3b3b3
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #F59E0B ;
+  background: #5e5e5e  ;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #F59E0B  ;
+  background: #160636 ;
 }
 
