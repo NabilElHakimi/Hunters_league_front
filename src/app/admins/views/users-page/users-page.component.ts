@@ -86,18 +86,17 @@ export class UsersPageComponent implements OnInit {
 
   deleteUser(item: any) {
     console.log('Delete user', item);
-    this.popupService.showConfirmationPopup(item.username, 'Are you sure you want to delete this user?')
+    this.popupService.showConfirmationPopup(item.firstName + " " + item.lastName , 'Are you sure you want to delete this user?')
       .then((result) => {
         if (result.isConfirmed) {
           this.userService.deleteUser(item.id).subscribe(() => {
             this.getUsers();
-            this.popupService.showSuccessPopup(item.username, 'Deleted successfully');
+            this.popupService.showSuccessPopup(item.firstName + " " + item.lastName , 'Deleted successfully');
           }, error => {
             console.error('Failed to delete', error);
           });
         }
       });
   }
-
 
 }
