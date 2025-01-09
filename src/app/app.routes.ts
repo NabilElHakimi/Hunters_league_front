@@ -11,11 +11,13 @@ import { DashboardPageComponent } from './admins/views/dashboard-page/dashboard-
 import { CompetitionPageComponent } from './admins/views/competition-page/competition-page.component';
 import { AdminGuard } from './guards/admin.guard';
 import { UsersPageComponent } from './admins/views/users-page/users-page.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   { path: 'home', component: HomePageComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
 
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },

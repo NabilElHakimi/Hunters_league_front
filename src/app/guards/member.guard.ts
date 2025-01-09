@@ -16,10 +16,10 @@ export class MemberGuard implements CanActivate {
       return false;
     }
 
-    if (this.checkRoleService.checkRole('MEMBER')) {
+    if (this.checkRoleService.checkRole('MEMBER') || this.checkRoleService.checkRole('ADMIN') || this.checkRoleService.checkRole('JYRY')) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/unauthorized']);
       return false;
     }
   }

@@ -18,10 +18,10 @@ export class JuryGuard implements CanActivate {
       return false;
     }
 
-    if (this.checkRoleService.checkRole('JURY')) {
+    if (this.checkRoleService.checkRole('JURY') || this.checkRoleService.checkRole('ADMIN')) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/unauthorized']);
       return false;
     }
   }

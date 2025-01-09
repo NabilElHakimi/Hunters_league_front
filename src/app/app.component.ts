@@ -37,7 +37,7 @@ import { CommonModule } from '@angular/common';
     }
 
     checkHeaderFooter(): boolean {
-      return !this.router.url.startsWith('/admin');
+      return !this.router.url.startsWith('/admin') && !this.router.url.startsWith('/unauthorized') ;
     }
 
 }
