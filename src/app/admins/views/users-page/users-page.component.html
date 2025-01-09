@@ -95,7 +95,7 @@ title="Add new competition"
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 3l4 4-10 10H7v-4L17 3z"></path>
             </svg>
           </button> -->
-          <button title="delete" class="text-red-600 dark:text-red-600 hover:underline">
+          <button title="delete" (click)="deleteUser(item)" class="text-red-600 dark:text-red-600 hover:underline">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
@@ -106,8 +106,6 @@ title="Add new competition"
   </table>
 
 </div>
-
-
 
 <div class="flex flex-wrap items-center justify-end gap-2 mt-6">
   <button
@@ -140,6 +138,7 @@ title="Add new competition"
     </svg>
   </button>
 </div>
+
 
 <!-- <div  tabindex="-1" [ngClass]="{'hidden': !isModalOpen}" class="flex bg-black/50  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%)] max-h-full">
   <div class="relative p-4 w-full max-w-6xl max-h-full">

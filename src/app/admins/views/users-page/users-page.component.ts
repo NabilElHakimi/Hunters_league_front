@@ -1,5 +1,6 @@
+import { PopupService } from './../../../services/popup-service/popup.service';
 import { UserService } from './../../services/user-service/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { LoaderAdminComponent } from '../../../components/loader-admin/loader-admin.component';
 import { CompetitionCardComponent } from "../../../components/cards/competition-card/competition-card.component";
 import { LoaderComponent } from "../../../components/loader/loader.component";
@@ -14,6 +15,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './users-page.component.css'
 })
 export class UsersPageComponent implements OnInit {
+
+  popupService : PopupService = inject(PopupService);
   isLoading: boolean = false;
   data : any = [];
   currentPage: number = 0;
@@ -54,12 +57,25 @@ export class UsersPageComponent implements OnInit {
   }
 
   getPages(): number[] {
+    const maxVisiblePages = 5;
     const pages = [];
-    for (let i = 0; i < this.totalPage; i++) {
+
+    const half = Math.floor(maxVisiblePages / 2);
+    let start = Math.max(this.currentPage - half, 0);
+    let end = start + maxVisiblePages;
+
+    if (end > this.totalPage) {
+      end = this.totalPage;
+      start = Math.max(end - maxVisiblePages, 0);
+    }
+
+    for (let i = start; i < end; i++) {
       pages.push(i);
     }
+
     return pages;
   }
+
 
   loadPage(page: number) {
     if (page >= 0 && page < this.totalPage) {
@@ -68,5 +84,8 @@ export class UsersPageComponent implements OnInit {
     }
   }
 
-
+  deleteUser(item: any) {
+    console.log('delete user', item);
+    this.popupService.showConfirmationPopup(item.username, 'Voulez-vous vraiment supprimer cet utilisateur ?')
+  }
 }
