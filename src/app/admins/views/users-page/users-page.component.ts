@@ -87,5 +87,15 @@ export class UsersPageComponent implements OnInit {
   deleteUser(item: any) {
     console.log('delete user', item);
     this.popupService.showConfirmationPopup(item.username, 'Voulez-vous vraiment supprimer cet utilisateur ?')
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.userService.deleteUser(item.id).subscribe(() => {
+            this.getUsers();
+            this.popupService.showSuccessPopup(item.username ,'Deleted succesfly'  );
+          }, error => {
+            console.error("Feild delete", error);
+          });
+        }
+      });
   }
 }
