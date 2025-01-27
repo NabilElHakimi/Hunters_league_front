@@ -48,8 +48,8 @@ title="Add new competition"
     <tbody>
       <tr
         *ngFor="let item of data; let i = index"
-        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
-        <td class="px-4 py-3">{{ item.code }}</td>
+        class="bg-white border-b dark:bg-gray-800  dark:border-gray-700 hover:bg-gray-300 dark:hover:bg-gray-700">
+        <td class="px-4 py-3 ">{{ item.code }}</td>
         <td class="px-4 py-3">{{ item.location }}</td>
         <td class="px-4 py-3">{{ item.date| date: 'mediumDate' }}</td>
         <td class="px-4 py-3">{{ item.speciesType }}</td>

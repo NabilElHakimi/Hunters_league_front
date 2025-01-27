@@ -27,6 +27,7 @@
         @if (!checkTocken()) {
           <li>
             <a routerLink="/member/species"
+            (click)="closeMenu()"
                routerLinkActive="text-yellow-400"
                class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Species
@@ -34,6 +35,7 @@
           </li>
           <li>
             <a routerLink="/member/results"
+            (click)="closeMenu()"
                routerLinkActive="text-yellow-400"
                class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Results
@@ -41,6 +43,7 @@
           </li>
           <li>
             <a routerLink="/member/top-three"
+            (click)="closeMenu()"
                routerLinkActive="text-yellow-400"
                class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Top-3
@@ -49,6 +52,7 @@
           <li>
             <a
                 (click)="logout()"
+                (click)="closeMenu()"
                routerLinkActive="text-yellow-400"
                class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Logout
@@ -59,6 +63,7 @@
         @if (checkTocken()) {
           <li>
             <a routerLink="/login"
+            (click)="closeMenu()"
                routerLinkActive="text-yellow-400"
                class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Login
@@ -66,6 +71,7 @@
           </li>
           <li>
             <a routerLink="/register"
+            (click)="closeMenu()"
                routerLinkActive="text-yellow-400"
                class="block py-2 px-3 md:p-0 text-white rounded hover:text-yellow-400">
               Register
