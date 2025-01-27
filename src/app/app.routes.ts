@@ -12,6 +12,7 @@ import { CompetitionPageComponent } from './admins/views/competition-page/compet
 import { AdminGuard } from './guards/admin.guard';
 import { UsersPageComponent } from './admins/views/users-page/users-page.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { SpeciesPageAdminComponent } from './admins/views/species-page-admin/species-page-admin.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -36,6 +37,7 @@ export const routes: Routes = [
     component: DashboardPageComponent,
     canActivate: [AuthGuard, AdminGuard],
     children: [
+      {path: 'species' , component : SpeciesPageAdminComponent},
       {path: 'competitions' , component : CompetitionPageComponent},
       {path: 'users' , component : UsersPageComponent}
     ],
