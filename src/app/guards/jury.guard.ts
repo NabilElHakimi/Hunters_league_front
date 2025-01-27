@@ -24,6 +24,7 @@ export class JuryGuard implements CanActivate {
       this.router.navigate(['/unauthorized']);
       return false;
     }
+    
   }
 
 }
