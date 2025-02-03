@@ -1,9 +1,9 @@
-<div *ngIf="isClosed" class="hidden sm:flex  bg-blue-600 shadow opacity-55 hover:opacity-100 z-50 w-10 h-10  justify-center items-center rounded-r-full fixed left-0 shadow-black text-gray-100 cursor-pointer top-20"
+<div *ngIf="isClosed" class="hidden  sm:flex  bg-blue-600  opacity-55 hover:opacity-100 z-50 w-10 h-10  justify-center items-center rounded-r-full fixed left-0 shadow-black text-gray-100 cursor-pointer top-20"
     (click)="toggleSidebar()">
   <span id="toggle-text">></span>
 </div>
 
-<aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform ease-in bg-white"
+<aside id="logo-sidebar" class="shadow  fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform ease-in bg-white"
        [ngClass]="{'-translate-x-full': isClosed, 'translate-x-0': !isClosed}"
        aria-label="Sidebar">
   <div *ngIf="!isClosed" class="hidden sm:flex  absolute bg-blue-600 w-10 h-10  justify-center items-center rounded-l-full right-0 text-white cursor-pointer"
@@ -12,7 +12,7 @@
   </div>
 
 
-  <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+  <div class=" h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800 ">
      <ul class="space-y-2 font-medium">
         <li>
            <a [routerLink]="['/admin']"   class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -72,10 +72,10 @@
 </aside>
 
 
-<div *ngIf="!isClosed" class="p-4 pt-10 sm:ml-64 bg-gray-100 ">
+<div *ngIf="!isClosed" class="p-4 pt-10 sm:ml-64  ">
   <router-outlet></router-outlet>
 </div>
 
-<div *ngIf="isClosed" class="p-4 pt-10 bg-gray-100 ">
+<div *ngIf="isClosed" class="p-4 pt-10  ">
   <router-outlet></router-outlet>
 </div>

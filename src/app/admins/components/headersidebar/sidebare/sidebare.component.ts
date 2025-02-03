@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './sidebare.component.html',
   styleUrl: './sidebare.component.css'
 })
-export class SidebareComponent {
+export class SidebareComponent implements OnInit {
 
   isClosed = false;
 
@@ -17,5 +17,11 @@ export class SidebareComponent {
     this.isClosed = !this.isClosed;
   }
 
+  ngOnInit(): void {
+    if(!this.isClosed)
+    {
+      this.toggleSidebar();
+    }
+  }
 
 }
